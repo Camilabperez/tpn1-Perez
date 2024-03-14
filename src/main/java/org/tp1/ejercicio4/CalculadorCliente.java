@@ -5,10 +5,12 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CalculadorCliente {
-    static Logger logger = Logger.getLogger(CalculadorCliente.class.getName());
+    static Logger logger = LogManager.getLogger(CalculadorCliente.class);
     private static CalculadoraRemoto calculadoraRemoto;
     private static JTextField inputA;
     private static JTextField inputB;
@@ -87,12 +89,12 @@ public class CalculadorCliente {
                 return;
             }
 
-            int op1 = Integer.parseInt(num1);
-            int op2 = Integer.parseInt(num2);
+            double op1 = Double.parseDouble(num1);
+            double op2 = Double.parseDouble(num2);
 
             String oper = btnOperadores.getSelection().getActionCommand();
 
-            long resultado;
+            double resultado;
             switch (oper) {
                 case "+" -> resultado = calculadoraRemoto.sumar(op1, op2);
                 case "-" -> resultado = calculadoraRemoto.restar(op1, op2);
@@ -115,7 +117,7 @@ public class CalculadorCliente {
         } catch (NumberFormatException ex) {
             labelResultado.setText("Los valores deben ser numeros");
         } catch (RemoteException | RuntimeException ex) {
-            logger.severe("Error al realizar la operacion: " + ex.getMessage());
+            logger.error("Error al realizar la operacion: {}", ex.getMessage());
             labelResultado.setText("Error al realizar la operacion");
         }
     }

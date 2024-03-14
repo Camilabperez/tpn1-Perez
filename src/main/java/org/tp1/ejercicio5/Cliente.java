@@ -5,11 +5,13 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Cliente {
     private static LoginRemoto loginRemoto;
-    static Logger logger = Logger.getLogger(Cliente.class.getName());
+    static Logger logger = LogManager.getLogger(Cliente.class);
     private static JTextField inputUsuario;
     private static JPasswordField inputClave;
     private static JButton btnIngresar;
@@ -92,7 +94,7 @@ public class Cliente {
                     statusLabel.setText("Usuario o clave incorrectos");
                 }
             } catch (RemoteException ex) {
-                logger.severe("Error en la comunicación remota: " + ex.getMessage());
+                logger.error("Error en la comunicación remota: {}", ex.getMessage());
             }
         });
     }

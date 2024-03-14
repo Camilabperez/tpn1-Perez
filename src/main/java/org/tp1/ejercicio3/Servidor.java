@@ -4,10 +4,12 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 class Servidor {
-    static Logger logger = Logger.getLogger(Servidor.class.getName());
+    static Logger logger = LogManager.getLogger(Servidor.class);
 
     public static void main(String[] args) throws RemoteException
     {
@@ -16,7 +18,7 @@ class Servidor {
         try {
             Naming.rebind("//localhost/PotenciasRemoto", potenciaRemoto);
         } catch (MalformedURLException ex) {
-            logger.severe(null + ex.getMessage());
+            logger.error(ex.getMessage());
         }
 
         logger.info("Listo el registro");

@@ -10,7 +10,7 @@ public interface CalculadoraRemoto extends Remote{
          * @param b numero ingresdo
          * @return resultado de la suma de a y b
          */
-        long sumar(long a, long b) throws RemoteException;
+        double sumar(double a, double b) throws RemoteException;
 
         /**
          * Calcula la resta de dos numeros
@@ -18,7 +18,7 @@ public interface CalculadoraRemoto extends Remote{
          * @param b numero ingresado
          * @return resultado de la resta de a y b
          */
-        long restar(long a, long b) throws RemoteException;
+        double restar(double a, double b) throws RemoteException;
 
         /**
          * Calcula la multiplicacion de dos numeros
@@ -26,7 +26,7 @@ public interface CalculadoraRemoto extends Remote{
          * @param b numero ingresado
          * @return resultado de la multiplicacion de a y b
          */
-        long multiplicar (long a, long b) throws RemoteException;
+        double multiplicar (double a, double b) throws RemoteException;
 
         /**
          * Calcula la division de dos numeros
@@ -34,7 +34,7 @@ public interface CalculadoraRemoto extends Remote{
          * @param b numero ingresado
          * @return resultado de la division de a y b
          */
-        long dividir (long a, long b) throws RemoteException;
+        double dividir (double a, double b) throws RemoteException;
 
 
 }

@@ -7,22 +7,22 @@ public class Calculadora extends UnicastRemoteObject implements CalculadoraRemot
     Calculadora() throws RemoteException { }
 
     @Override
-    public long sumar(long a, long b) throws RemoteException{
+    public double sumar(double a, double b) throws RemoteException{
         return a + b;
     }
 
     @Override
-    public long restar(long a, long b) throws RemoteException{
+    public double restar(double a, double b) throws RemoteException{
         return a - b;
     }
 
     @Override
-    public long multiplicar (long a, long b) throws RemoteException{
+    public double multiplicar (double a, double b) throws RemoteException{
         return a * b;
     }
 
     @Override
-    public long dividir (long a, long b) throws RemoteException{
+    public double dividir (double a, double b) throws RemoteException{
         return a / b;
     }
 

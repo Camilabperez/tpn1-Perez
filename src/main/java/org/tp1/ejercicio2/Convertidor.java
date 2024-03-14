@@ -9,10 +9,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Convertidor extends UnicastRemoteObject implements ConvertidorRemoto {
-    static Logger logger = Logger.getLogger(Convertidor.class.getName());
+    static Logger logger = LogManager.getLogger(Convertidor.class);
     Convertidor() throws RemoteException { }
 
     @Override
@@ -44,7 +46,7 @@ public class Convertidor extends UnicastRemoteObject implements ConvertidorRemot
             cotizacion = mapper.readValue(responsetoString, Dolar.class);
 
         } catch (IOException e) {
-            logger.info("Error al obtener la cotización: " + e.getMessage());
+            logger.error("Error al obtener la cotización: {}", e.getMessage());
         }
 
         return cotizacion != null ? cotizacion.getVenta() : 0;

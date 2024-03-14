@@ -3,11 +3,13 @@ package org.tp1.ejercicio5;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.*;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Login extends UnicastRemoteObject implements LoginRemoto {
     private static final String URL = "jdbc:sqlite:login.db";
-    static Logger logger = Logger.getLogger(Login.class.getName());
+    static Logger logger = LogManager.getLogger(Login.class);
     Login() throws RemoteException { }
 
     @Override

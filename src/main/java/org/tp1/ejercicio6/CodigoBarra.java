@@ -3,12 +3,13 @@ package org.tp1.ejercicio6;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CodigoBarra extends UnicastRemoteObject implements CodigoBarraRemoto {
     private static final String URL = "jdbc:sqlite:productos.db";
-    static Logger logger = Logger.getLogger(CodigoBarra.class.getName());
+    static Logger logger = LogManager.getLogger(CodigoBarra.class);
     CodigoBarra() throws RemoteException { }
 
     @Override
@@ -27,7 +28,7 @@ public class CodigoBarra extends UnicastRemoteObject implements CodigoBarraRemot
                 resultadoConsulta = "El producto " + nombre + " tiene un precio de " + precio;
             }
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error al obtener nombre y precio por código", e);
+            logger.error("Error al obtener nombre y precio por código", e);
         }
 
         return resultadoConsulta;

@@ -1,8 +1,9 @@
 package org.tp1;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main {
-    static Logger logger = Logger.getLogger(Main.class.getName());
+    static Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args) {
         logger.info("Hello and welcome!");
     }
